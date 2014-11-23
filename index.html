@@ -1,0 +1,107 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Retirement Calculator</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src = "app.js"></script>
+	<link rel="stylesheet" href="css/application.css" type="text/css">
+	<link href='http://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div class="outerContainer">
+		<div class="container">
+			<h2>
+				Monthly Savings for<br> Retirement
+			</h2>
+			<div class="table">
+				<div class="tableRow">
+					<p>Monthly Savings:  </p>
+					<p><input type="text" size="15"></p>
+				</div>
+				<div class="tableRow">
+					<p>Expected Rate of Return (Percent):</p> 
+					<p><input type="text" value="5" size="10"></p>
+				</div>
+				<div class="tableRow">
+					<p># of Years Saving:                     </p>
+					<p><input type="text" size="5"></p>
+				</div>
+				<div class="tableRow">
+					<p>Plus # Months Saving:  </p>
+					<p><input type="text" size="10"></p>
+				</div>
+			</div>
+			<div class="outerContainer">
+				<button>Calculate</button>
+			</div>
+			<div class="table">
+				<div class="tableRow">
+					<p class="answerTitle">Future Worth of Uniform Income:</p>
+					<p>$1,000,000</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<h2>Current Lump Sum Savings<br>in Different Investments</h2>
+			<div class="table">
+				<div class="tableRow">
+					<p>Enter # of investment areas: </p>
+					<p>
+						<select name="" id="">
+							<option value="0"></option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+						<button>Populate Inputs</button>
+					</p>
+				</div>
+				<div class="tableRow">
+						<p class="answerTitle">Future Worth from Lump Sum Investments:</p>
+						<p>$1,000,000</p>
+				</div>
+				<div class="tableRow">
+						<p class="answerTitle">Total Retirement Worth (Uniform plus Lump Sum):</p>
+						<p>$2,000,000</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<div class="outerContainer">
+		<div class="container">
+			<h2>Have I Saved Enough for Retirement?</h2></p>
+			<div class="tableRow">
+				<p>Lump Sum Retirement Expense (house/car etc.)</p>
+				<p><input type="text"></p>
+			</div>
+			<div class="tableRow">
+				<p>Expected Retirement Return on Investments (Percent): </p>
+				<p><input type="text" size="5"></p>
+			</div>
+			<div class="tableRow">
+				<p>Expected Retirement Inflation Rate (Percent): </p>
+				<p><input type="text" size="5"></p>
+			</div>
+			<div class="tableRow">
+				<p>Expected Years of Retirement:</p>
+				<input type="text" size="5">
+			</div>
+			<div class="tableRow">
+				<p>Expected Monthly Retirement Expenses:</p>
+				<p><input type="text" size="10"></p>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
