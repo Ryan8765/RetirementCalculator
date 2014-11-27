@@ -57,37 +57,59 @@ table {
 h2 {
   text-align: center;
   font-family: 'Nunito', sans-serif;
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-weight: bold;
-  padding: 0 0 .3em 0; }
+  padding: 0 0 .5em 0;
+  text-decoration: underline;
+  color: #611427; }
 
 button {
   margin: .7em 0 .5em 0; }
+
+input {
+  border-radius: .5em; }
+
+select {
+  border-radius: .5em; }
+
+html {
+  background: -webkit-linear-gradient(#3F3F3F, #727272, #3F3F3F);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#3F3F3F, #727272, #3F3F3F);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#3F3F3F, #727272, #3F3F3F);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#3F3F3F, #727272, #3F3F3F);
+  /* Standard syntax */ }
 
 /* Pseudo-classes
 =====================================*/
 /* Classes
 =====================================*/
 .container {
-  border: 1px solid red;
+  border: 3px solid black;
   display: inline-block;
   padding: 1.2em;
   margin: .5em;
   text-align: left;
-  vertical-align: top; }
+  vertical-align: top;
+  background: white;
+  border-radius: 1.2em;
+  border: 1px solid white; }
 
 .outerContainer {
   text-align: center; }
 
 .table {
   display: table; }
+  .table button {
+    padding: 0px; }
 
 .tableRow {
   display: table-row; }
-
-.tableRow p {
-  display: table-cell;
-  padding-top: .7em; }
+  .tableRow p {
+    display: table-cell;
+    padding-top: .7em; }
 
 .tableRow p:first-child {
   text-align: right;
@@ -96,7 +118,30 @@ button {
 .tableRow p:first-child h2 {
   text-align: center; }
 
-.table button {
-  padding: 0px; }
+/*this class is not working*/
+.colSpan {
+  -webkit-column-span: all;
+  /* Chrome, Safari, Opera */
+  column-span: all;
+  text-align: center; }
+
+.popupBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0px;
+  left: 0px;
+  text-align: center; }
+  .popupBackground .container {
+    display: inline-block;
+    margin-top: 4em;
+    border: 3px solid #611427;
+    text-align: center; }
+  .popupBackground .outerContainer button:first-child {
+    margin-right: 1em; }
+
+/* Id's
+=====================================*/
 
 /*# sourceMappingURL=application.css.map */

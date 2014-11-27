@@ -1,0 +1,15 @@
+	<div class="popupBackground">
+		<div class="container">
+			<p>
+				Are you sure you want to re-populate the inputs?<br>  All previously entered data for these inputs will be lost. 
+			</p>
+			<div class="outerContainer">
+				<button id="yes">
+					Yes
+				</button>
+				<button id="no">
+					No
+				</button>
+			</div>
+		</div>
+	</div>

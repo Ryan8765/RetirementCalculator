@@ -9,46 +9,15 @@
 </head>
 <body>
 	<div class="outerContainer">
-		<div class="container">
+		<div class="container" id="updateWidth">
 			<h2>
-				Monthly Savings for<br> Retirement
+				Current Savings for Retirement
 			</h2>
 			<div class="table">
 				<div class="tableRow">
-					<p>Monthly Savings:  </p>
-					<p><input type="text" size="15"></p>
-				</div>
-				<div class="tableRow">
-					<p>Expected Rate of Return (Percent):</p> 
-					<p><input type="text" value="5" size="10"></p>
-				</div>
-				<div class="tableRow">
-					<p># of Years Saving:                     </p>
-					<p><input type="text" size="5"></p>
-				</div>
-				<div class="tableRow">
-					<p>Plus # Months Saving:  </p>
-					<p><input type="text" size="10"></p>
-				</div>
-			</div>
-			<div class="outerContainer">
-				<button>Calculate</button>
-			</div>
-			<div class="table">
-				<div class="tableRow">
-					<p class="answerTitle">Future Worth of Uniform Income:</p>
-					<p>$1,000,000</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<h2>Current Lump Sum Savings<br>in Different Investments</h2>
-			<div class="table">
-				<div class="tableRow">
-					<p>Enter # of investment areas: </p>
+					<p>Enter number of investment areas: </p>
 					<p>
-						<select name="" id="">
+						<select name="" id="numInputs">
 							<option value="0"></option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -61,11 +30,33 @@
 							<option value="9">9</option>
 							<option value="10">10</option>
 						</select>
-						<button>Populate Inputs</button>
+						<button id="populateInputs">Populate Inputs</button>
 					</p>
 				</div>
 				<div class="tableRow">
-						<p class="answerTitle">Future Worth from Lump Sum Investments:</p>
+					<p>Monthly savings:  </p>
+					<p><input type="text"></p>
+				</div>
+				<div class="tableRow">
+					<p>Number of 
+						<select name="timeFram" id="">
+							<option value="years">years</option>
+							<option value="months">months</option>
+						</select>
+					saving:</p>
+					<p><input type="text"></p>
+				</div>
+				<div class="tableRow">
+					<p class='colSpan'>
+						<button>Calculate</button>
+					</p>
+				</div>
+				<div class="tableRow">
+					<p class="answerTitle"> Future Worth of Monthly savings:</p>
+					<p>$1,000,000</p>
+				</div>
+				<div class="tableRow">
+						<p class="answerTitle">Future Worth of Lump Sum Investments:</p>
 						<p>$1,000,000</p>
 				</div>
 				<div class="tableRow">
@@ -78,27 +69,36 @@
 
 	
 	<div class="outerContainer">
-		<div class="container">
-			<h2>Have I Saved Enough for Retirement?</h2></p>
+		<div class="container" id='revisedWidth'>
+			<h2>Have I Saved Enough for Retirement?</h2>
 			<div class="tableRow">
-				<p>Lump Sum Retirement Expense (house/car etc.)</p>
+				<p>Lump sum retirement expenses (house/car etc.):</p>
 				<p><input type="text"></p>
 			</div>
 			<div class="tableRow">
-				<p>Expected Retirement Return on Investments (Percent): </p>
-				<p><input type="text" size="5"></p>
+				<p>Retirement return on investments (percent): </p>
+				<p><input type="text"></p>
 			</div>
 			<div class="tableRow">
-				<p>Expected Retirement Inflation Rate (Percent): </p>
-				<p><input type="text" size="5"></p>
+				<p>Retirement inflation rate (percent): </p>
+				<p><input type="text"></p>
 			</div>
 			<div class="tableRow">
-				<p>Expected Years of Retirement:</p>
-				<input type="text" size="5">
+					<p>Number of 
+						<select name="timeFram" id="">
+							<option value="years">years</option>
+							<option value="months">months</option>
+						</select>
+					 of retirement:</p>
+					<p><input type="text"></p>
+				</div>
+			<div class="tableRow">
+				<p>Monthly retirement expenses:</p>
+				<p><input type="text"></p>
 			</div>
 			<div class="tableRow">
-				<p>Expected Monthly Retirement Expenses:</p>
-				<p><input type="text" size="10"></p>
+				<p>Retirement tax rate:</p>
+				<p><input type="text"></p>
 			</div>
 		</div>
 	</div>
