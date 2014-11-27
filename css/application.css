@@ -64,7 +64,10 @@ h2 {
   color: #611427; }
 
 button {
-  margin: .7em 0 .5em 0; }
+  margin: .7em 0 .5em 0;
+  padding: .3em .6em .3em .6em; }
+  button:hover {
+    cursor: pointer; }
 
 input {
   border-radius: .5em; }
@@ -95,15 +98,16 @@ html {
   vertical-align: top;
   background: white;
   border-radius: 1.2em;
-  border: 1px solid white; }
+  border: 1px solid white;
+  box-shadow: 10px 10px 5px #2E2E2E; }
+  .container:first-child {
+    margin-top: 2em; }
 
 .outerContainer {
   text-align: center; }
 
 .table {
   display: table; }
-  .table button {
-    padding: 0px; }
 
 .tableRow {
   display: table-row; }
@@ -140,6 +144,9 @@ html {
     text-align: center; }
   .popupBackground .outerContainer button:first-child {
     margin-right: 1em; }
+
+.addedNode {
+  font-style: italic; }
 
 /* Id's
 =====================================*/

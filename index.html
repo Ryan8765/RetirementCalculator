@@ -11,11 +11,11 @@
 	<div class="outerContainer">
 		<div class="container" id="updateWidth">
 			<h2>
-				Current Savings for Retirement
+				How Much Money Will I Have at Retirement?
 			</h2>
 			<div class="table">
 				<div class="tableRow">
-					<p>Enter number of investment areas: </p>
+					<p>Enter number of current investments (if any): </p>
 					<p>
 						<select name="" id="numInputs">
 							<option value="0"></option>
@@ -34,30 +34,34 @@
 					</p>
 				</div>
 				<div class="tableRow">
-					<p>Monthly savings:  </p>
-					<p><input type="text"></p>
+					<p>Savings per month for retirement:  </p>
+					<p><input type="number"></p>
+				</div>
+				<div class="tableRow">
+					<p>Expected interest on monthly savings:  </p>
+					<p><input type="number"></p>
 				</div>
 				<div class="tableRow">
 					<p>Number of 
-						<select name="timeFram" id="">
+						<select name="timeFram" id="yearsMonths1">
 							<option value="years">years</option>
 							<option value="months">months</option>
 						</select>
 					saving:</p>
-					<p><input type="text"></p>
+					<p><input type="number" id="numPeriods"></p>
 				</div>
 				<div class="tableRow">
 					<p class='colSpan'>
-						<button>Calculate</button>
+						<button id='calcLumpSums'>Calculate</button>
 					</p>
 				</div>
 				<div class="tableRow">
 					<p class="answerTitle"> Future Worth of Monthly savings:</p>
-					<p>$1,000,000</p>
+					<p>$0</p>
 				</div>
 				<div class="tableRow">
 						<p class="answerTitle">Future Worth of Lump Sum Investments:</p>
-						<p>$1,000,000</p>
+						<p class = "one" id='fw'>$0</p>
 				</div>
 				<div class="tableRow">
 						<p class="answerTitle">Total Retirement Worth (Uniform plus Lump Sum):</p>
@@ -73,15 +77,15 @@
 			<h2>Have I Saved Enough for Retirement?</h2>
 			<div class="tableRow">
 				<p>Lump sum retirement expenses (house/car etc.):</p>
-				<p><input type="text"></p>
+				<p><input type="number"></p>
 			</div>
 			<div class="tableRow">
 				<p>Retirement return on investments (percent): </p>
-				<p><input type="text"></p>
+				<p><input type="number"></p>
 			</div>
 			<div class="tableRow">
 				<p>Retirement inflation rate (percent): </p>
-				<p><input type="text"></p>
+				<p><input type="number"></p>
 			</div>
 			<div class="tableRow">
 					<p>Number of 
@@ -90,15 +94,15 @@
 							<option value="months">months</option>
 						</select>
 					 of retirement:</p>
-					<p><input type="text"></p>
+					<p><input type="number"></p>
 				</div>
 			<div class="tableRow">
 				<p>Monthly retirement expenses:</p>
-				<p><input type="text"></p>
+				<p><input type="number"></p>
 			</div>
 			<div class="tableRow">
 				<p>Retirement tax rate:</p>
-				<p><input type="text"></p>
+				<p><input type="number"></p>
 			</div>
 		</div>
 	</div>
