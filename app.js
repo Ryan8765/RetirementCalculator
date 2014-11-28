@@ -55,8 +55,11 @@ $(document).ready(function() {
 
 //Calculate lump sums when calculate button is clicked
 	var numInvestments;
+	var futureWorthLump = 0;
 	function lumpSumCalc() {
 		//variables
+		//future worth lump sum value
+		var fw = 0;
 		//present values array
 		var pv = [];
 		while(pv.length > 0) {
@@ -67,8 +70,6 @@ $(document).ready(function() {
 		while(r.length > 0) {
     		r.pop();
 		}
-		//future worth value total
-		var fw = 0;
 		//future worth calculation
 		function futureWorth () {
 			for (i=0; i < numInvestments; i++) {
@@ -102,18 +103,62 @@ $(document).ready(function() {
 			futureWorth();
 		} //end if
 		//insert answer in html
-		$('#fw').text('$ ' + fw.toFixed(2));
-
-
-		console.log('pv ' + pv);
-		console.log('fw ' + fw);
-		console.log('r ' + r);
-		console.log(numInvestments);
+		$('#fw').text('$ ' + fw.toFixed(0));
+		futureWorthLump = fw;
 	};//end lump sum calc
 
-	//when calculate is clicked calculate lump sum and monthly savings
+//Monthly savings calculations
+	var futureWorthMonth = 0;
+	function monthlySavings() {
+		//variables
+		//future worth monthly savings total
+		var fw2 = 0;
+		//monthly investments
+		var a = $('#a').val() * 1;
+		console.log("a " + a);
+		//interest divided by 12 for compounding and divided by 100 to turn to decimal
+		var r = (($('#r').val())/12)/100;
+		console.log("r " + r);
+		//number of periods in years
+		var n = $('#numPeriods').val() * 1;
+		console.log("n " + n);
+		//get if years or months is selected for saving time
+		var yearsOrMonths = $('#yearsMonths1').val();
+		//future worth calc function
+		function futureWorth() {
+			if (r == 0) {
+				fw2 = a * n;
+				futureWorthMonth = fw2;
+			} else {
+				fw2 = Math.pow((1 + r), n);
+				fw2 = fw2 - 1;
+				fw2 = fw2 / r;
+				fw2 = fw2 * a;
+				futureWorthMonth = fw2;
+			}
+		};
+		//if user enters years or if user enters months for calculation change period accordingly.
+		if(yearsOrMonths == "years") {
+			n = n * 12;
+			futureWorth();
+		} else {
+			futureWorth();
+		} //end if
+		//enter answer into html
+		$('#fw2').text('$ ' + fw2.toFixed(0));
+	};//end Monthly savings function
+
+//Add Lump Sum Investments and Monthly savings for total retirement worth
+	function totalRetirement() {
+		var fwTotal = futureWorthMonth + futureWorthLump;
+		$('#fwTotal').text('$ ' + fwTotal.toFixed(0));
+	};	
+
+//when calculate is clicked calculate lump sum and monthly savings
 	$('#calcLumpSums').on('click',function(){
 		lumpSumCalc();
+		monthlySavings();
+		totalRetirement();
 		$('.one').animate({
 			fontWeight:'900',
 			fontSize:'1.4em'
@@ -125,5 +170,6 @@ $(document).ready(function() {
 				}, 1000);
 		});
 	});
+
 //----------------------------------	
 });
