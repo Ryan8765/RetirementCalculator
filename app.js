@@ -136,7 +136,8 @@ $(document).ready(function() {
 				fw2 = fw2 * a;
 				futureWorthMonth = fw2;
 			}
-		};
+		};//end monthly savings function
+
 		//if user enters years or if user enters months for calculation change period accordingly.
 		if(yearsOrMonths == "years") {
 			n = n * 12;
@@ -155,21 +156,140 @@ $(document).ready(function() {
 	};	
 
 //when calculate is clicked calculate lump sum and monthly savings
-	$('#calcLumpSums').on('click',function(){
+	$('#calcLumpSums').on('click',function(event){
 		lumpSumCalc();
 		monthlySavings();
 		totalRetirement();
 		$('.one').animate({
 			fontWeight:'900',
-			fontSize:'1.4em'
-			}, 2000,
+			fontSize:'1.6em'
+			}, 1500,
 			function(){
 				$('.one').animate({
 					fontWeight:'100',
-					fontSize:'1em'
+					fontSize:'1.1em'
 				}, 1000);
 		});
 	});
+//if user hits enter button, populate input with savings from above calc in html
+	$('#enter').on('click',function(){
+		
+		var valueString = $('#fwTotal').text();
+		valueString = valueString.slice(2);
+		valueString = parseInt(valueString);
+		$('#retirementSavings').val(valueString);
+	});
+//function to calculate have a saved enough for retirement section
+	//function to use when calculate button is clicked
+	function enoughForRetirement() {
+		//variables
+		//global variables 
+		var retirementSavings = $('#retirementSavings').val();
+		//retirement inflation rate divided by 12 for months and 100 for decimal
+		var inflationRet = (($('#inflationRet').val())/12)/100;
+		console.log("retirement Inflation " + inflationRet);
+		//user entering years or months for term
+		var yearsOrMonths2 = $('#yearsOrMonths2').val();
+		//lump sum retirement purchase expense
+		var lumpSumRet = $('#lumpSumRet').val();
+		console.log("lump sum expense " + lumpSumRet);
+		// number of periods
+		var n2 = $('#n2').val();
+		//if user enters years or if user enters months for calculation, change period accordingly
+		if(yearsOrMonths2 == "years") {
+			n2 = n2 * 12;		
+		}
+		console.log("N periods " + n2);
+		//interest earned on retirement divided by 12 for months and 100 to decimal
+		var r2 = (($('#r2').val())/12)/100;
+		console.log('Interest ' + r2);
+		//Total retirement savings less lump sum purchase (house/car)
+		var retirementSavingsLess;
+		//how much does your retirement savings generate each year?
+		var annualInc;
+		//retirement tax rate in decimal
+		var retirementTax = ($('#retirementTax').val())/100;
+		console.log('Tax rate ' + retirementTax);
+		//retirement monthly expenses entered by user divided by tax rate 
+		var retExpenses = ($('#retExpenses').val())/retirementTax;
+		console.log('retirement expenses calc ' + retExpenses);
+		//how much money do you need a year for living?
+		var annualNeed;
+		//annual income less annual expenses of first year
+		var annualDiff;
+		//after x-amount of years, how much retirement savings do you have?
+		var totRetSavings;
+		//after x-amount of years how much money will you have spent
+		var totRetExpenses;
+		//what remains after all expenses are incorporated
+		var netRemaining;
+		
+		console.log('retirementSavings ' + retirementSavings);
+		alert('retirement savings ' + retirementSavings);
+		//retirement savings less lump sum retirement expense calc
+		retirementSavingsLess = retirementSavings - lumpSumRet;
+		console.log('Retirement savings less lump sum ' + retirementSavingsLess);
+		//how much income your retirement generates first year of retirement
+		annualInc = Math.pow((1+r2),12);
+		annualInc = annualInc * retirementSavingsLess;
+		annualInc = annualInc - retirementSavingsLess;
+		console.log('Annual Income ' + annualInc);
+		//how much annual income do you need your first year based on your monthly expenses
+		annualNeed = retExpenses * 12;
+		console.log('annual need ' + annualNeed);
+		//annual income less annual expenses difference
+		annualDiff = annualInc -annualNeed;
+		console.log('AnnualInc minus annual need ' + annualDiff);
+		//total retirement savings over duration of retirement..based on number of periods user enters
+		totRetSavings = Math.pow((1+r2),n2);
+		totRetSavings = totRetSavings * retirementSavingsLess;
+		console.log('Total retirement savings over duration ' + totRetSavings);
+		//total retirement expenses over duration of retirement...factoring in inflation.
+		totRetExpenses = Math.pow((1 + inflationRet),n2);
+		totRetExpenses = totRetExpenses -1;
+		totRetExpenses = totRetExpenses/inflationRet;
+		totRetExpenses = totRetExpenses * retExpenses;
+		console.log('Total retirement expenses over duration ' + totRetExpenses);
+		//net remaining in retirement
+		netRemaining = totRetSavings - totRetExpenses;
+		console.log('Net remaining ' + netRemaining);
+		//enter answers into html
+		$('#annualInc').text('$ ' + annualInc.toFixed(0));
+		$('#annualNeed').text('$ ' + annualNeed.toFixed(0));
+		$('#annualDiff').text('$ ' + annualDiff.toFixed(0));
+		//if annual difference is negative turn red
+		if(annualDiff < 0) {
+			$('#annualDiff').css('color', 'red');
+		} else {
+			$('#annualDiff').css('color', 'black');
+		}
+		$('#totRetSavings').text('$ ' + totRetSavings.toFixed(0));
+		$('#totRetExpenses').text('$ ' + totRetExpenses.toFixed(0));
+		$('#netRemaining').text('$ ' + netRemaining.toFixed(0));
+		if(netRemaining < 0) {
+			$('#netRemaining').css('color', 'red');
+		} else {
+			$('#netRemaining').css('color', 'black');
+		}
+	}; //end function 
+	//enter answers when calculate button is clicked
+	$('#calcRetirement').on('click',function() {
+		enoughForRetirement();
+		//animate second calcs answers
+		$('.two').animate({
+			fontWeight:'900',
+			fontSize:'1.4em'
+			}, 1500,
+			function(){
+				$('.two').animate({
+					fontWeight:'100',
+					fontSize:'1.1em'
+				}, 1000);
+		});
+	});
+	
+	
+
 
 //----------------------------------	
 });

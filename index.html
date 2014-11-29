@@ -8,6 +8,11 @@
 	<link href='http://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	<header>
+		<h1>
+			Retirement Calculator
+		</h1>
+	</header>
 	<div class="outerContainer">
 		<div class="container" id="updateWidth">
 			<h2>
@@ -38,7 +43,7 @@
 					<p><input type="number" id="a"></p>
 				</div>
 				<div class="tableRow">
-					<p>Expected interest on monthly savings:  </p>
+					<p>Expected annual interest on monthly savings:  </p>
 					<p><input type="number" id="r"></p>
 				</div>
 				<div class="tableRow">
@@ -56,16 +61,16 @@
 					</p>
 				</div>
 				<div class="tableRow">
-						<p class="answerTitle">Future Worth of Lump Sum Investments:</p>
-						<p class = "one" id='fw'>$ 0</p>
+						<p class="answerTitle">Future Worth of Investments:</p>
+						<p id='fw'>$ 0</p>
 				</div>
 				<div class="tableRow">
 					<p class="answerTitle"> Future Worth of Monthly savings:</p>
-					<p id="fw2" class="one">$ 0</p>
+					<p id="fw2">$ 0</p>
 				</div>
-				<div class="tableRow">
-						<p class="answerTitle">Total Retirement Worth (Monthly plus Lump Sum):</p>
-						<p class = "one" id = "fwTotal">$ 0</p>
+				<div class="tableRow answer">
+						<p class="answerTitle">Total Retirement Savings:</p>
+						<p class = "one fwTotal" id = "fwTotal">$ 0</p>
 				</div>
 			</div>
 		</div>
@@ -76,33 +81,74 @@
 		<div class="container" id='revisedWidth'>
 			<h2>Have I Saved Enough for Retirement?</h2>
 			<div class="tableRow">
+				<p>Enter savings from above calculation?</p>
+				<p>
+					<button id='enter'>
+						Enter Savings
+					</button>
+				</p>
+			</div>
+			<div class="tableRow">
+				<p>Enter retirement savings amount:</p>
+				<p id="retirementInput"><input type="text" id='retirementSavings'></p>
+			</div>
+			<div class="tableRow">
 				<p>Lump sum retirement expenses (house/car etc.):</p>
-				<p><input type="number"></p>
+				<p><input type="number" id='lumpSumRet'></p>
 			</div>
 			<div class="tableRow">
 				<p>Retirement return on investments (percent): </p>
-				<p><input type="number"></p>
+				<p><input type="number" id='r2'></p>
 			</div>
 			<div class="tableRow">
 				<p>Retirement inflation rate (percent): </p>
-				<p><input type="number"></p>
+				<p><input type="number" id='inflationRet'></p>
 			</div>
 			<div class="tableRow">
 					<p>Number of 
-						<select name="timeFram" id="">
+						<select name="timeFram" id="yearsOrMonths2">
 							<option value="years">years</option>
 							<option value="months">months</option>
 						</select>
 					 of retirement:</p>
-					<p><input type="number"></p>
+					<p><input type="number" id='n2'></p>
 				</div>
 			<div class="tableRow">
 				<p>Monthly retirement expenses:</p>
-				<p><input type="number"></p>
+				<p><input type="number" id='retExpenses'></p>
 			</div>
 			<div class="tableRow">
-				<p>Retirement tax rate:</p>
-				<p><input type="number"></p>
+				<p>Retirement tax rate on income (percent):</p>
+				<p><input type="number" id='retirementTax'></p>
+			</div>
+			<div class="tableRow">
+				<p class='colSpan'>
+						<button id='calcRetirement'>Calculate</button>
+				</p>
+			</div>
+			<div class="tableRow">
+				<p class="answerTitle"> Annual growth of retirement savings (1st year):</p>
+				<p id='annualInc'>$ 0</p>
+			</div>
+			<div class="tableRow">
+				<p class="answerTitle"> Annual expenses in retirement (1st year):</p>
+				<p id='annualNeed'>$ 0</p>
+			</div>
+			<div class="tableRow separator">
+				<p class="answerTitle answer"> First year annual income less expenses:</p>
+				<p id='annualDiff' class = "answer  fwTotal two">$ 0</p>
+			</div>
+			<div class="tableRow">
+				<p class="answerTitle"> Total savings over duration of retirement:</p>
+				<p id='totRetSavings'>$ 0</p>
+			</div>
+			<div class="tableRow">
+				<p class="answerTitle"> Total expenses over duration of retirement (inflation included):</p>
+				<p id='totRetExpenses'>$ 0</p>
+			</div>
+			<div class="tableRow separator">
+				<p class="answerTitle answer"> Net savings after duration of retirement:</p>
+				<p id="netRemaining" class="answer fwTotal two">$ 0</p>
 			</div>
 		</div>
 	</div>

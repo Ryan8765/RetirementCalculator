@@ -1,6 +1,19 @@
 // =============================
 // Base Styles
 // =============================
+header {
+	background-color:black;
+	height:4.5em;
+	text-align:center;
+	line-height:4.5em;
+	border-bottom:.2em solid #CCCC9a;
+}
+
+h1 {
+	display:inline;
+	font-size:2.5em;
+	color:#CCCC9a;
+}
 
 h2 {
 	text-align:center;
@@ -9,7 +22,7 @@ h2 {
 	font-weight:bold;
 	padding:0 0 .5em 0;
 	text-decoration:underline;
-	color:#611427;
+	color:#701112;
 }
 
 button {
@@ -56,9 +69,9 @@ html {
 	border-radius:1.2em;
 	border:1px solid white;
 	box-shadow: 10px 10px 5px #2E2E2E;
-	&:first-child {
-		margin-top:2em;
-	}
+	margin-top:2em;
+	margin-bottom:2em;
+	
 }
 
 .outerContainer {
@@ -75,6 +88,7 @@ html {
 	p {
 		display:table-cell;
 		padding-top:.7em;
+
 	}
 }
 
@@ -117,6 +131,35 @@ html {
 
 .addedNode {
 	font-style:italic;
+}
+
+.answer {
+	font-weight:bold;
+
+	p {
+		font-size:1.1em;
+	}
+}
+
+.separator {
+	height: 2.5em;
+}
+
+.separator2 {
+	border-bottom:1px solid black;
+}
+.fwTotal {
+	border-top: double black;
+}
+.border {
+	width:90%;
+	text-align:center;
+	border:1px solid black;
+	margin:1em;
+	margin-left:auto;
+	margin-right:auto;
+	padding:1em;
+	border-radius:1em;
 }
 
 /* Id's
