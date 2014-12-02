@@ -1,6 +1,7 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8"/>
 	<title>Retirement Calculator</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src = "app.js"></script>
@@ -9,9 +10,13 @@
 </head>
 <body>
 	<header>
-		<h1>
-			Retirement Calculator
-		</h1>
+		<div id='header'>
+			<img src="images/goldCoin4.png" alt="Gold Coin">
+			<h1>
+				Retirement Calculator
+			</h1>
+			<img src="images/goldCoin3.png" alt="Gold Coin">
+		</div>
 	</header>
 	<div class="outerContainer">
 		<div class="container" id="updateWidth">
@@ -43,7 +48,7 @@
 					<p><input type="number" id="a"></p>
 				</div>
 				<div class="tableRow">
-					<p>Expected annual interest on monthly savings:  </p>
+					<p>Annual interest on monthly savings (percent):  </p>
 					<p><input type="number" id="r"></p>
 				</div>
 				<div class="tableRow">
@@ -60,19 +65,22 @@
 						<button id='calcLumpSums'>Calculate</button>
 					</p>
 				</div>
-				<div class="tableRow">
-						<p class="answerTitle">Future Worth of Investments:</p>
-						<p id='fw'>$ 0</p>
-				</div>
-				<div class="tableRow">
-					<p class="answerTitle"> Future Worth of Monthly savings:</p>
-					<p id="fw2">$ 0</p>
-				</div>
-				<div class="tableRow answer">
-						<p class="answerTitle">Total Retirement Savings:</p>
-						<p class = "one fwTotal" id = "fwTotal">$ 0</p>
-				</div>
 			</div>
+				<h3> Retirement Savings</h3>
+				<div class="border">
+					<div class="tableRow">
+							<p class="answerTitle">Future Worth of Investments:</p>
+							<p id='fw'>$ 0</p>
+					</div>
+					<div class="tableRow">
+						<p class="answerTitle"> Future Worth of Monthly savings:</p>
+						<p id="fw2">$ 0</p>
+					</div>
+					<div class="tableRow answer">
+							<p class="answerTitle">Total Retirement Savings:</p>
+							<p class = "one fwTotal" id = "fwTotal">$ 0</p>
+					</div>
+				</div>
 		</div>
 	</div>
 
@@ -126,29 +134,40 @@
 						<button id='calcRetirement'>Calculate</button>
 				</p>
 			</div>
-			<div class="tableRow">
-				<p class="answerTitle"> Annual growth of retirement savings (1st year):</p>
-				<p id='annualInc'>$ 0</p>
+			<h3>Annual Retirement Overview</h3>
+			<div class="border">
+				<div class="tableRow">
+					<p class="answerTitle"> Annual growth of retirement savings (1st year):</p>
+					<p id='annualInc'>$ 0</p>
+				</div>
+				<div class="tableRow">
+					<p class="answerTitle"> Annual expenses in retirement (1st year):</p>
+					<p id='annualNeed'>$ 0</p>
+				</div>
+				<div class="tableRow separator answer">
+					<p class="answerTitle"> Income less expenses (1st year):</p>
+					<p id='annualDiff' class = " fwTotal two">$ 0</p>
+				</div>
 			</div>
-			<div class="tableRow">
-				<p class="answerTitle"> Annual expenses in retirement (1st year):</p>
-				<p id='annualNeed'>$ 0</p>
+			<h3>End of Retirement Overview</h3>
+			<div class="border">
+				<div class="tableRow">
+					<p class="answerTitle"> Total savings at end of retirement:</p>
+					<p id='totRetSavings'>$ 0</p>
+				</div>
+				<div class="tableRow">
+					<p class="answerTitle"> Cumulative expenses at end of retirement:</p>
+					<p id='totRetExpenses'>$ 0</p>
+				</div>
+				<div class="tableRow separator answer">
+					<p class="answerTitle"> Net savings end of retirement:</p>
+					<p id="netRemaining" class="fwTotal two">$ 0</p>
+				</div>
 			</div>
-			<div class="tableRow separator">
-				<p class="answerTitle answer"> First year annual income less expenses:</p>
-				<p id='annualDiff' class = "answer  fwTotal two">$ 0</p>
-			</div>
-			<div class="tableRow">
-				<p class="answerTitle"> Total savings over duration of retirement:</p>
-				<p id='totRetSavings'>$ 0</p>
-			</div>
-			<div class="tableRow">
-				<p class="answerTitle"> Total expenses over duration of retirement (inflation included):</p>
-				<p id='totRetExpenses'>$ 0</p>
-			</div>
-			<div class="tableRow separator">
-				<p class="answerTitle answer"> Net savings after duration of retirement:</p>
-				<p id="netRemaining" class="answer fwTotal two">$ 0</p>
+			<h3>Save your information?</h3>
+			<div class="outerContainer">
+				<button id='saveData'>Save Data</button>
+				<button id='deleteData'>Delete Stored Data</button>
 			</div>
 		</div>
 	</div>
