@@ -2,11 +2,15 @@ $(document).ready(function() {
 //--------------------------------
 
 
-	
-//Populate investment areas when "populate input" button is clicked
 	//global variables
-	var populatedInputs = false;
-
+	//lets program know if inputs have been populated before to create a warning not to overwrite previous inputs.
+	var populatedInputs;
+	if (localStorage.localStorageInitiated) {
+		populatedInputs = true;
+	} else {
+		populatedInputs = false;
+	}
+	//Populate investment areas when "populate input" button is clicked
 	$('#populateInputs').on('click',function(){
 		//populate input function
 		function populateInputs(numInputs){
@@ -177,14 +181,16 @@ $(document).ready(function() {
 		valueString = parseInt(valueString);
 		$('#retirementSavings').val(valueString);
 	});
-//function to calculate have a saved enough for retirement section
+//function to calculate have I saved enough for retirement section
 	//function to use when calculate button is clicked
+	var inflationRet;
+
 	function enoughForRetirement() {
 		//variables
 		//global variables 
 		var retirementSavings = $('#retirementSavings').val();
 		//retirement inflation rate divided by 12 for months and 100 for decimal
-		var inflationRet = (($('#inflationRet').val())/12)/100;
+		inflationRet = (($('#inflationRet').val())/12)/100;
 		console.log("retirement Inflation " + inflationRet);
 		//user entering years or months for term
 		var yearsOrMonths2 = $('#yearsOrMonths2').val();
@@ -200,6 +206,7 @@ $(document).ready(function() {
 		console.log("N periods " + n2);
 		//interest earned on retirement divided by 12 for months and 100 to decimal
 		var r2 = (($('#r2').val())/12)/100;
+
 		console.log('Interest ' + r2);
 		//Total retirement savings less lump sum purchase (house/car)
 		var retirementSavingsLess;
@@ -271,19 +278,25 @@ $(document).ready(function() {
 	} //end function 
 	//enter answers when calculate button is clicked
 	$('#calcRetirement').on('click',function() {
-		enoughForRetirement();
-		//animate second calcs answers
-		$('.two').animate({
-			fontWeight:'900',
-			fontSize:'1.4em'
-			}, 1500,
-			function(){
-				$('.two').animate({
-					fontWeight:'100',
-					fontSize:'1.1em'
-				}, 1000);
-		});
-	});
+
+		//stop NaN from occuring if user doesn't enter inflation or retirement tax rate as dividing by 0 results in NaN being posted.
+		if ($('#inflationRet').val() == 0 || $('#retirementTax').val() == 0) {
+			alert("You forgot to enter a retirement inflation rate, retirement tax rate, or both.  Please enter a value for these inputs and then press 'calculate' again.");
+		} else {			
+			enoughForRetirement();
+			//animate second calcs answers
+			$('.two').animate({
+				fontWeight:'900',
+				fontSize:'1.4em'
+				}, 1500,
+				function(){
+					$('.two').animate({
+						fontWeight:'100',
+						fontSize:'1.1em'
+					}, 1000);
+			}); //end animate
+		}// end if statement
+	}); 
 	
 //local storage function to save all data to local storage so user doesn't have to re-enter everything.
 	function saveInputs() {
